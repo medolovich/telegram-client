@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"log"
 	"net/http"
 
 	"golang.org/x/net/proxy"
@@ -81,7 +80,6 @@ func New(botAPIToken string, proxyURL string, proxyLogin string, proxyPass strin
 				User:     proxyLogin,
 				Password: proxyPass,
 			}
-			log.Println(proxyURL, auth)
 			dialer, err = proxy.SOCKS5("tcp", proxyURL, &auth, proxy.Direct)
 		} else {
 			dialer, err = proxy.SOCKS5("tcp", proxyURL, nil, proxy.Direct)
